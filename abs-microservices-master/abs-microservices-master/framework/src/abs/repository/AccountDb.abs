@@ -1,0 +1,44 @@
+// generated abs fli code for AccountImpl
+module MAccountDbImpl;
+export AccountDb,AccountDbImpl;
+import Account,AccountImpl from MAccountModel;
+import * from ABS.FLI;
+
+
+interface AccountDb {
+	List<Account> findAll(String className);
+	List<Account> findAllByAttributes(String className, String query);
+	Account find(String className);
+	Account findByAttributes(String className, String query);
+	Unit save(Account object);
+	Unit delete(Account object);
+	Account update(Account object);
+	String log(String log);
+}
+
+
+[Foreign]
+class AccountDbImpl implements AccountDb {
+	List<Account> findAllByAttributes(String className, String query) {
+		return Nil;
+	}
+	List<Account> findAll(String className) {
+		return Nil;
+	}
+	Account findByAttributes(String className, String query) {
+		return new local AccountImpl();
+	}
+	Account find(String className) {
+		return new local AccountImpl();
+	}
+	Unit save(Account object) {
+	}
+	Unit delete(Account object) {
+	}
+	Account update(Account object) {
+		return new local AccountImpl();
+	}
+	String log(String log) {
+		return "return log";
+	}
+}

@@ -1,0 +1,44 @@
+// generated abs fli code for CustomerImpl
+module MCustomerDbImpl;
+export CustomerDb,CustomerDbImpl;
+import Customer,CustomerImpl from MCustomerModel;
+import * from ABS.FLI;
+
+
+interface CustomerDb {
+	List<Customer> findAll(String className);
+	List<Customer> findAllByAttributes(String className, String query);
+	Customer find(String className);
+	Customer findByAttributes(String className, String query);
+	Unit save(Customer object);
+	Unit delete(Customer object);
+	Customer update(Customer object);
+	String log(String log);
+}
+
+
+[Foreign]
+class CustomerDbImpl implements CustomerDb {
+	List<Customer> findAllByAttributes(String className, String query) {
+		return Nil;
+	}
+	List<Customer> findAll(String className) {
+		return Nil;
+	}
+	Customer findByAttributes(String className, String query) {
+		return new local CustomerImpl();
+	}
+	Customer find(String className) {
+		return new local CustomerImpl();
+	}
+	Unit save(Customer object) {
+	}
+	Unit delete(Customer object) {
+	}
+	Customer update(Customer object) {
+		return new local CustomerImpl();
+	}
+	String log(String log) {
+		return "return log";
+	}
+}

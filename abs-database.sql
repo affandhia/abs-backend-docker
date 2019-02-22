@@ -1,0 +1,1 @@
+CREATE schema abs_bankaccount

@@ -6,21 +6,21 @@ WORKDIR /tmp
 
 # This is in accordance to : https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-get-on-ubuntu-16-04
 RUN apt-get update && \
-	apt-get install -y openjdk-8-jdk && \
-	apt-get install -y ant && \
+    apt-get install -y openjdk-8-jdk && \
+    apt-get install -y ant && \
     apt-get install -y wget && \
     apt-get install -y net-tools && \
-	apt-get clean && \
-	rm -rf /var/lib/apt/lists/* && \
-	rm -rf /var/cache/oracle-jdk8-installer;
-	
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* && \
+    rm -rf /var/cache/oracle-jdk8-installer;
+
 # Fix certificate issues, found as of 
 # https://bugs.launchpad.net/ubuntu/+source/ca-certificates-java/+bug/983302
 RUN apt-get install -y ca-certificates-java && \
-	apt-get clean && \
-	update-ca-certificates -f && \
-	rm -rf /var/lib/apt/lists/* && \
-	rm -rf /var/cache/oracle-jdk8-installer;
+    apt-get clean && \
+    update-ca-certificates -f && \
+    rm -rf /var/lib/apt/lists/* && \
+    rm -rf /var/cache/oracle-jdk8-installer;
 
 # Setup JAVA_HOME, this is useful for docker commandline
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
@@ -67,18 +67,12 @@ COPY abs-microservices-master/abs-microservices-master/framework framework
 
 WORKDIR /framework
 
-# insert email
-ENV EMAIL="example@email.here"
 
 # required by the backend
 RUN mkdir external
 
-RUN sed -i '/administrator=/s/$/, spicervolt@gmail.com/' auth.properties
-RUN sed -i '/manager=/s/$/, spicervolt@gmail.com/' auth.properties
-RUN sed -i '/operator=/s/$/, spicervolt@gmail.com/' auth.properties
-
 RUN mv build.bat build.sh
-RUN cat build.sh | head -1 > build.sh
+RUN sed -i '/pause/d' build.sh
 RUN chmod +x build.sh
 RUN chmod +x run.sh
 

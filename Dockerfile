@@ -56,7 +56,8 @@ ADD httpd-xampp.conf /opt/lampp/etc/extra/httpd-xampp.conf
 VOLUME  ["/opt/lampp/htdocs/"]
 
 # expose the ports that will be used by xampp
-EXPOSE 80 443 3306
+# uncomment line below to expose port for XAMPP service
+# EXPOSE 80 443 3306
 
 RUN echo "/opt/lampp/lampp start && tail -F /opt/lampp/logs/error_log" > xampp.sh
 RUN chmod +x xampp.sh
@@ -85,7 +86,6 @@ RUN chmod +x run.sh
 # COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # expose the port used by abs-backend
-
 EXPOSE 8081
 WORKDIR /
 

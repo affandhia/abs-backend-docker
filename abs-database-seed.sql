@@ -1,6 +1,10 @@
 -- SET DATABASE
 USE abs_bankaccount;
 
+-- SET AUTO INCREMENT
+ALTER TABLE `AccountImpl` CHANGE `id` `id` INT(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `CustomerImpl` CHANGE `id` `id` INT(11) NOT NULL AUTO_INCREMENT;
+
 -- SEED CUSTOMER LIST
 insert into CustomerImpl (address, phone, name, id, email) values ('pondok ripi', '08121828383', 'Affan', '1', 'affan.dhia@ui.ac.id');
 insert into CustomerImpl (address, phone, name, id, email) values ('1855 Jana Lane', '8729726894', 'Christin Mapletoft', '2', 'cmapletoft1@newyorker.com');

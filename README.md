@@ -13,7 +13,7 @@ cd abs-backend-docker
 
 # Build the backend
 chmod +x build.sh
-./build.sh
+bash build.sh
 ```
 
 ### Customization
